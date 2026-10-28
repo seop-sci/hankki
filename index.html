@@ -54,6 +54,8 @@
   /* 골드박스 배너: 화면 폭에 맞춰 줄어들어요 */
   .gold{display:block;margin:12px 0 2px;border-radius:10px;overflow:hidden;line-height:0}
   .gold img{width:100%;height:auto;display:block}
+  .dyn{margin-top:16px;display:flex;justify-content:center;overflow:hidden}
+  .dyn iframe{max-width:100%}
   .empty{text-align:center;color:var(--sub);padding:40px 12px;font-size:15px}
   footer{margin-top:28px;text-align:center;font-size:12.5px;color:var(--sub)}
   footer a{color:var(--sub)}
@@ -69,8 +71,8 @@
   <!-- 쿠팡 파트너스 고지 문구: 링크가 있는 페이지 맨 위에 꼭 보여야 해요 -->
   <p class="notice">이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 지급받습니다.<br>가격과 재고는 쿠팡에서 확인해 주세요.</p>
 
-  <!-- 위쪽 쿠팡 배너 (고정) -->
-  <a class="gold" href="https://link.coupang.com/a/idNsJBiS60" target="_blank" rel="sponsored noopener" referrerpolicy="unsafe-url"><img src="https://ads-partners.coupang.com/banners/1044329?trackingCode=AF5932859&amp;subId=&amp;traceId=V0-301-2b8ef06377ec8f50-I1044329&amp;w=728&amp;h=90" width="728" height="90" alt="쿠팡 추천 상품"></a>
+  <!-- 위쪽 골드박스 배너 (고정) -->
+  <a class="gold" href="https://link.coupang.com/a/idNmL37VhA" target="_blank" rel="sponsored noopener" referrerpolicy="unsafe-url"><img src="https://ads-partners.coupang.com/banners/1044327?trackingCode=AF5932859&amp;subId=&amp;traceId=V0-301-969b06e95b87326d-I1044327&amp;w=728&amp;h=90" width="728" height="90" alt="쿠팡 골드박스 오늘의 특가"></a>
 
   <nav class="filters" aria-label="분야">
     <button data-cat="all" aria-pressed="true">전체</button>
@@ -82,8 +84,13 @@
 
   <main class="list" id="list"><p class="empty">불러오는 중이에요</p></main>
 
-  <!-- 상품 목록 맨 아래 골드박스 배너 (고정) -->
-  <a class="gold" style="margin-top:16px" href="https://link.coupang.com/a/idNmL37VhA" target="_blank" rel="sponsored noopener" referrerpolicy="unsafe-url"><img src="https://ads-partners.coupang.com/banners/1044327?trackingCode=AF5932859&amp;subId=&amp;traceId=V0-301-969b06e95b87326d-I1044327&amp;w=728&amp;h=90" width="728" height="90" alt="쿠팡 골드박스 오늘의 특가"></a>
+  <!-- 상품 목록 맨 아래 다이나믹 배너 (고객 관심 기반 추천, 채널 아이디 hankkiweb) -->
+  <div class="dyn">
+    <script src="https://ads-partners.coupang.com/g.js"></script>
+    <script>
+      new PartnersCoupang.G({"id":1044332,"template":"carousel","trackingCode":"AF5932859","subId":"hankkiweb","width":"360","height":"120","tsource":""});
+    </script>
+  </div>
 
   <footer>
     한끼백과 유튜브 쇼츠, 자취생과 1인 가구를 위한 음식 정보
