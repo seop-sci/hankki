@@ -41,7 +41,9 @@
   .cat.money{background:#3B5BA9} .cat.health{background:#C2408A}
   .vtitle{margin:6px 0 12px;font-size:16.5px;font-weight:700;line-height:1.4;letter-spacing:-0.2px}
   .vtitle a{color:inherit;text-decoration:none}
-  .prod{display:flex;gap:12px;align-items:center}
+  .prod{display:flex;gap:14px;align-items:center}
+  /* 쿠팡 파트너스 이미지 위젯(120x240)이 있으면 왼쪽에 보여 줘요 */
+  .widget{flex:none;width:120px;height:240px;border:0;border-radius:10px;background:#fff}
   .thumb{flex:none;width:76px;height:76px;border-radius:12px;background:#F4EEE6;object-fit:cover;border:1px solid var(--line)}
   .pinfo{flex:1;min-width:0}
   .pname{font-size:14.5px;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -86,6 +88,8 @@ let items = [], current = 'all';
 
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function safeUrl(u){ return /^https:\/\//.test(u || '') ? u : ''; }
+// 위젯 주소는 쿠팡 파트너스가 만든 https://coupa.ng/... 만 받아요
+function widgetUrl(u){ return /^https:\/\/coupa\.ng\/[A-Za-z0-9]+$/.test(u || '') ? u : ''; }
 
 function render(){
   const box = document.getElementById('list');
@@ -95,16 +99,17 @@ function render(){
     return;
   }
   box.innerHTML = shown.map(it => {
-    const link = safeUrl(it.coupang_url), img = safeUrl(it.product_image), yt = safeUrl(it.youtube_url);
+    const link = safeUrl(it.coupang_url), img = safeUrl(it.product_image), yt = safeUrl(it.youtube_url), wg = widgetUrl(it.widget_url);
     const title = yt ? `<a href="${esc(yt)}" target="_blank" rel="noopener">${esc(it.title)}</a>` : esc(it.title);
     return `<article class="item">
       <div class="meta"><span class="cat ${esc(it.category)}">${esc(CAT_KO[it.category] || it.category_ko || '')}</span><span>${esc(it.date)}</span></div>
       <h2 class="vtitle">${title}</h2>
       <div class="prod">
-        ${img ? `<img class="thumb" src="${esc(img)}" alt="" loading="lazy">` : `<div class="thumb"></div>`}
-        <div class="pinfo"><div class="pname">${esc(it.product_name)}</div><div class="kw">영상 속 ${esc(it.product_kw)}</div></div>
+        ${wg ? `<iframe class="widget" src="${esc(wg)}" width="120" height="240" scrolling="no" loading="lazy" referrerpolicy="unsafe-url" title="${esc(it.product_name)}"></iframe>`
+             : img ? `<img class="thumb" src="${esc(img)}" alt="" loading="lazy">` : ''}
+        <div class="pinfo"><div class="pname">${esc(it.product_name)}</div><div class="kw">영상 속 ${esc(it.product_kw)}</div>
+          ${link ? `<a class="buy" href="${esc(link)}" target="_blank" rel="sponsored noopener">쿠팡에서 보기</a>` : ''}</div>
       </div>
-      ${link ? `<a class="buy" href="${esc(link)}" target="_blank" rel="sponsored noopener">쿠팡에서 보기</a>` : ''}
     </article>`;
   }).join('');
 }
