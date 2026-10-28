@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한끼백과 영상 속 물건</title>
+<meta name="description" content="한끼백과 쇼츠에 나온 보관용기, 조리도구, 장보기 물건을 영상별로 모았어요.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  /* 색은 영상의 따뜻한 주방 색과 맞췄어요 */
+  :root{
+    --bg:#FFF8EE; --card:#FFFFFF; --ink:#2B2A33; --sub:#6B6772; --line:#EFE3D2;
+    --coral:#F0643C; --coral-dk:#D9472B; --teal:#2F8F83; --mustard:#F2B33D; --chip:#FCEBDD;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#1D1B20; --card:#28252C; --ink:#F4EFE8; --sub:#B8B1BC; --line:#3A3540; --chip:#3A2C26; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
+  .wrap{max-width:560px;margin:0 auto;padding:20px 16px 48px}
+  header{text-align:center;padding:12px 0 8px}
+  .logo{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:26px;letter-spacing:-0.5px}
+  .logo .dot{width:12px;height:12px;border-radius:50%;background:var(--coral)}
+  .lead{margin:6px 0 0;color:var(--sub);font-size:15px}
+  .notice{margin:16px 0 4px;padding:12px 14px;border-radius:12px;background:var(--chip);
+    font-size:13px;color:var(--ink);line-height:1.5}
+  .filters{display:flex;gap:8px;overflow-x:auto;padding:14px 0 6px;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .filters button{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);
+    font:inherit;font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;cursor:pointer}
+  .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .list{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;
+    box-shadow:0 1px 0 rgba(0,0,0,.02)}
+  .meta{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--sub)}
+  .cat{font-weight:700;color:#fff;padding:2px 9px;border-radius:999px;font-size:12px}
+  .cat.cook{background:var(--coral)} .cat.home{background:var(--teal)}
+  .cat.money{background:#3B5BA9} .cat.health{background:#C2408A}
+  .vtitle{margin:6px 0 12px;font-size:16.5px;font-weight:700;line-height:1.4;letter-spacing:-0.2px}
+  .vtitle a{color:inherit;text-decoration:none}
+  .prod{display:flex;gap:12px;align-items:center}
+  .thumb{flex:none;width:76px;height:76px;border-radius:12px;background:#F4EEE6;object-fit:cover;border:1px solid var(--line)}
+  .pinfo{flex:1;min-width:0}
+  .pname{font-size:14.5px;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .kw{font-size:12.5px;color:var(--sub);margin-top:2px}
+  .buy{display:block;margin-top:12px;text-align:center;background:var(--coral);color:#fff;font-weight:700;
+    text-decoration:none;padding:12px;border-radius:12px;font-size:15px}
+  .buy:active{background:var(--coral-dk)}
+  .empty{text-align:center;color:var(--sub);padding:40px 12px;font-size:15px}
+  footer{margin-top:28px;text-align:center;font-size:12.5px;color:var(--sub)}
+  footer a{color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><span class="dot"></span>한끼백과</div>
+    <p class="lead">쇼츠에 나온 물건을 영상별로 모았어요</p>
+  </header>
+
+  <!-- 쿠팡 파트너스 고지 문구: 링크가 있는 페이지 맨 위에 꼭 보여야 해요 -->
+  <p class="notice">이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받을 수 있습니다. 가격과 재고는 쿠팡에서 확인해 주세요.</p>
+
+  <nav class="filters" aria-label="분야">
+    <button data-cat="all" aria-pressed="true">전체</button>
+    <button data-cat="cook" aria-pressed="false">자취 레시피</button>
+    <button data-cat="home" aria-pressed="false">보관과 손질</button>
+    <button data-cat="money" aria-pressed="false">장보기와 식비</button>
+    <button data-cat="health" aria-pressed="false">음식 상식</button>
+  </nav>
+
+  <main class="list" id="list"><p class="empty">불러오는 중이에요</p></main>
+
+  <footer>
+    한끼백과 유튜브 쇼츠, 자취생과 1인 가구를 위한 음식 정보
+  </footer>
+</div>
+
+<script>
+// products.json 에서 승인된 상품만 읽어 와서 최신 영상 순으로 보여 줘요
+const CAT_KO = {cook:'자취 레시피', home:'보관과 손질', money:'장보기와 식비', health:'음식 상식'};
+let items = [], current = 'all';
+
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function safeUrl(u){ return /^https:\/\//.test(u || '') ? u : ''; }
+
+function render(){
+  const box = document.getElementById('list');
+  const shown = items.filter(it => current === 'all' || it.category === current);
+  if (!shown.length){
+    box.innerHTML = '<p class="empty">아직 올라온 물건이 없어요.<br>새 영상이 나오면 여기에 추가돼요.</p>';
+    return;
+  }
+  box.innerHTML = shown.map(it => {
+    const link = safeUrl(it.coupang_url), img = safeUrl(it.product_image), yt = safeUrl(it.youtube_url);
+    const title = yt ? `<a href="${esc(yt)}" target="_blank" rel="noopener">${esc(it.title)}</a>` : esc(it.title);
+    return `<article class="item">
+      <div class="meta"><span class="cat ${esc(it.category)}">${esc(CAT_KO[it.category] || it.category_ko || '')}</span><span>${esc(it.date)}</span></div>
+      <h2 class="vtitle">${title}</h2>
+      <div class="prod">
+        ${img ? `<img class="thumb" src="${esc(img)}" alt="" loading="lazy">` : `<div class="thumb"></div>`}
+        <div class="pinfo"><div class="pname">${esc(it.product_name)}</div><div class="kw">영상 속 ${esc(it.product_kw)}</div></div>
+      </div>
+      ${link ? `<a class="buy" href="${esc(link)}" target="_blank" rel="sponsored noopener">쿠팡에서 보기</a>` : ''}
+    </article>`;
+  }).join('');
+}
+
+document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+  current = b.dataset.cat;
+  document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+  render();
+}));
+
+fetch('products.json', {cache:'no-store'})
+  .then(r => r.json())
+  .then(d => {
+    items = (d.items || []).filter(it => it.coupang_url).sort((a,b) => (b.video_id || '').localeCompare(a.video_id || ''));
+    render();
+  })
+  .catch(() => { document.getElementById('list').innerHTML = '<p class="empty">목록을 불러오지 못했어요. 잠시 뒤 다시 열어 주세요.</p>'; });
+</script>
+</body>
+</html>
