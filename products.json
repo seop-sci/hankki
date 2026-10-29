@@ -1,5 +1,17 @@
 {
  "_about": "한끼백과 상품 페이지에 보여 줄 승인된 상품 목록. 예약 제작이 hankki-shorts 저장소의 승인 결과를 옮겨 와요.",
- "updated": "",
- "items": []
+ "updated": "2026-10-29 17:41",
+ "items": [
+  {
+   "video_id": "2026-10-29-am",
+   "date": "2026-10-29",
+   "category": "cook",
+   "title": "떡볶이 양념 황금비율, 2:1:1:1만 기억하세요",
+   "product_kw": "계량스푼 세트",
+   "product_name": "스텐 계량 스푼",
+   "coupang_url": "https://link.coupang.com/a/iek66DhC8W",
+   "widget_url": "https://coupa.ng/cqu3sj",
+   "product_image": ""
+  }
+ ]
 }
