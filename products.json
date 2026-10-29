@@ -1,7 +1,18 @@
 {
  "_about": "한끼백과 상품 페이지에 보여 줄 승인된 상품 목록. 예약 제작이 hankki-shorts 저장소의 승인 결과를 옮겨 와요.",
- "updated": "2026-10-29 17:41",
+ "updated": "2026-10-30 04:56",
  "items": [
+  {
+   "video_id": "2026-10-29-pm",
+   "date": "2026-10-29",
+   "category": "home",
+   "title": "버섯, 씻어서 넣으면 금방 물러요! 보관과 손질법",
+   "product_kw": "냉동 지퍼백",
+   "product_name": "지퍼락 냉동용 지퍼백",
+   "coupang_url": "https://link.coupang.com/a/ie5miefh7g",
+   "widget_url": "https://coupa.ng/cqwkVo",
+   "product_image": ""
+  },
   {
    "video_id": "2026-10-29-am",
    "date": "2026-10-29",
