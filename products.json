@@ -1,7 +1,19 @@
 {
  "_about": "한끼백과 상품 페이지에 보여 줄 승인된 상품 목록. 예약 제작이 hankki-shorts 저장소의 승인 결과를 옮겨 와요.",
- "updated": "2026-10-31 05:10",
+ "updated": "2026-11-01 05:02",
  "items": [
+  {
+   "video_id": "2026-10-30-am",
+   "date": "2026-10-30",
+   "show_date": "2026-11-02",
+   "category": "money",
+   "title": "생선 살 때 딱 4곳만 보세요, 신선한 생선 고르는 법",
+   "product_kw": "보냉백 장바구니",
+   "product_name": "보냉백 장바구니",
+   "coupang_url": "https://link.coupang.com/a/iizyRbOpGu",
+   "widget_url": "https://coupa.ng/cqzfp3",
+   "product_image": ""
+  },
   {
    "video_id": "2026-10-29-pm",
    "date": "2026-10-29",
