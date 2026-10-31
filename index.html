@@ -76,7 +76,7 @@
 
   <nav class="filters" aria-label="분야">
     <button data-cat="all" aria-pressed="true">전체</button>
-    <button data-cat="cook" aria-pressed="false">자취 레시피</button>
+    <button data-cat="cook" aria-pressed="false">집밥 레시피</button>
     <button data-cat="home" aria-pressed="false">보관과 손질</button>
     <button data-cat="money" aria-pressed="false">장보기와 식비</button>
     <button data-cat="health" aria-pressed="false">음식 상식</button>
@@ -93,13 +93,13 @@
   </div>
 
   <footer>
-    한끼백과 유튜브 쇼츠, 자취생과 1인 가구를 위한 음식 정보
+    한끼백과 유튜브 쇼츠, 음식에 관한 모든 정보
   </footer>
 </div>
 
 <script>
 // products.json 에서 승인된 상품만 읽어 와서 최신 영상 순으로 보여 줘요
-const CAT_KO = {cook:'자취 레시피', home:'보관과 손질', money:'장보기와 식비', health:'음식 상식'};
+const CAT_KO = {cook:'집밥 레시피', home:'보관과 손질', money:'장보기와 식비', health:'음식 상식'};
 let items = [], current = 'all';
 
 function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
